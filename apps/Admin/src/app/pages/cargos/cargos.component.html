@@ -1,0 +1,52 @@
+<!--begin::App Content Header-->
+<div class="app-content-header">
+    <!--begin::Container-->
+    <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="mb-0">Cargos</h3>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item">
+                        <a routerLink="/">Home Page</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page" routerLink="/cargos">Cargos</li>
+                </ol>
+            </div>
+        </div>
+        <!--end::Row-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::App Content Header-->
+<!--begin::App Content-->
+<div class="app-content">
+    <flexi-grid [data]="data()!" [dataBinding]="true" [total]="total()!" [loading]="loading()" [showCaption]="true"
+        captionTitle="Cargo Lists" [showCommandColumn]="true" [commandColumnTemplate]="commandColumnTemplate"
+        (onRefresh)="result.reload()" (dataStateChange)="dataStateChange($event)" [captionTemplate]="captionTemplate">
+
+        <ng-template #captionTemplate>
+            <flexi-button btnSize="small" btnColor="primary" btnIcon="library_add" title="Create Cargo" flexiTooltip />
+        </ng-template>
+
+        <flexi-grid-column field="createAt" title="Create Date" filterType="date" format="dd MMM yyyy HH:mm" />
+        <flexi-grid-column field="senderFullName" title="Sender Name" />
+        <flexi-grid-column field="receiverFullName" title="Receiver Name" />
+        <flexi-grid-column field="deliveryAddressCity" title="Delivery City" />
+        <flexi-grid-column field="deliveryAddressDistrict" title="Delivery District" />
+        <flexi-grid-column field="cargoTypeName" title="Cargo Type" />
+        <flexi-grid-column field="weight" title="Weight (KG)" />
+        <flexi-grid-column field="cargoStatusName" title="Cargo Status" />
+        <flexi-grid-column field="createUserName" title="Created By" />
+        <flexi-grid-column field="updateAt" title="Update Date" filterType="date" format="dd MMM yyyy HH:mm" />
+        <flexi-grid-column field="updateUserName" title="Updated By" />
+
+        <ng-template #commandColumnTemplate let-item>
+            <flexi-button btnSize="small" btnIcon="delete" btnColor="danger" title="Remove Cargo" flexiTooltip />
+        </ng-template>
+    </flexi-grid>
+
+</div>
+<!--end::App Content-->
